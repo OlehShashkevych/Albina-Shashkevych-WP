@@ -1,10 +1,5 @@
 <?php
-/**
- * Template Name: Text Page (Legal/Info)
- */
-
 get_header();
-
 ?>
 
 <main id="primary-content" class="site-main">
@@ -14,14 +9,7 @@ get_header();
                 <span class="uppercase-label">/<?php _e('Page', 'photographer'); ?></span>
                 <h1 class="section__title"><?php the_title(); ?></h1>
                 <div class="entry-content">
-                    <?php
-                    if (have_posts()):
-                        while (have_posts()):
-                            the_post();
-                            the_content();
-                        endwhile;
-                    endif;
-                    ?>
+                    <?php the_content(); ?>
                 </div>
             </article>
         </div>

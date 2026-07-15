@@ -1,66 +1,38 @@
 <footer class="site-footer">
     <div class="container">
-        
-        <?php if( have_rows('socials_list', 'option') ): ?>
-            <div class="footer-socials">
-                <?php while( have_rows('socials_list', 'option') ): the_row(); 
-                    $icon = get_sub_field('icon');
-                    $link = get_sub_field('link');
-                ?>
-                    <a href="<?php echo esc_url($link); ?>" target="_blank" rel="noopener" class="social-item">
-                        <?php echo wp_get_attachment_image( $icon, 'thumbnail', false, array('class' => 'social-icon') ); ?>
-                    </a>
-                <?php endwhile; ?>
-            </div>
-        <?php endif; ?>
+        <div class="footer-inner">
+            <?php if (have_rows('socials', 'option')): ?>
+                <div class="footer-socials">
+                    <?php while (have_rows('socials', 'option')): the_row(); ?>
+                        <?php
+                        $name = get_sub_field('name');
+                        $url  = get_sub_field('url');
+                        $icon = get_sub_field('icon');
+                        ?>
+                        <a href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr($name); ?>">
+                            <?php if ($icon): ?>
+                                <?php echo $icon; ?>
+                            <?php else: ?>
+                                <span class="uppercase-label"><?php echo esc_html($name); ?></span>
+                            <?php endif; ?>
+                        </a>
+                    <?php endwhile; ?>
+                </div>
+            <?php endif; ?>
 
-        <div class="footer-bottom">
-            
-            <div class="footer-left">
-                <?php 
-                // 1. Получаем ссылку на страницу политики (из Настройки -> Конфиденциальность)
+            <div class="footer-bottom">
+                <?php
                 $privacy_url = get_privacy_policy_url();
-
-                // 2. Определяем текущий язык и меняем текст
-                $locale = get_locale(); // Получаем код языка (напр. 'uk', 'ru_RU', 'en_US')
-                
-                // Дефолтный текст (английский)
-                $privacy_text = 'Terms & Privacy';
-
-                // Если русский
-                if ( strpos($locale, 'ru') === 0 ) {
-                    $privacy_text = 'Политика конфиденциальности';
-                } 
-                // Если украинский
-                elseif ( strpos($locale, 'uk') === 0 ) {
-                    $privacy_text = 'Політика конфіденційності';
-                }
-
-                // 3. Вывод
-                if( $privacy_url ): ?>
+                if ($privacy_url): ?>
                     <a href="<?php echo esc_url($privacy_url); ?>" class="footer-link">
-                        <?php echo esc_html($privacy_text); ?>
+                        <?php _e('Privacy Policy', 'photographer'); ?>
                     </a>
-                <?php else: ?>
-                    <span class="footer-link">
-                        <?php echo esc_html($privacy_text); ?>
-                    </span>
                 <?php endif; ?>
-            </div>
 
-            <div class="footer-right">
-                <?php 
-                $icon_id = get_field('footer_icon', 'option');
-                if( $icon_id ) {
-                    echo wp_get_attachment_image( $icon_id, 'thumbnail', false, array('class' => 'footer-logo-icon') );
-                }
-                ?>
                 <span class="copyright-text">
-                    &copy; <?php echo date('Y'); ?> All Rights Reserved | 
-                    <span class="author-name"><?php echo esc_html( get_field('footer_author', 'option') ); ?></span>
+                    &copy; <?php echo date('Y'); ?> <?php echo esc_html(get_field('footer_text', 'option') ?: 'All Rights Reserved'); ?> | <?php echo esc_html(get_bloginfo('name')); ?>
                 </span>
             </div>
-
         </div>
     </div>
 </footer>

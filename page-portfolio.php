@@ -7,7 +7,7 @@ get_header();
 
 ?>
 
-<main class="site-main">
+<main id="primary-content" class="site-main">
 
     <?php
 // 1. Получаем данные для Hero секции заранее

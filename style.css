@@ -1,12 +1,9 @@
 /*
-Theme Name: Photographer & Videographer
+Theme Name: Albina Shashkevych Portfolio
 Author: Oleh Shashkevych
-Description: Custom theme for photographer portfolio. Built with ACF Pro & Polylang.
-Version: 1.0.0
+Description: Custom fashion/editorial photographer portfolio theme. Built with ACF Pro, GSAP, Three.js, Polylang.
+Version: 2.0.0
 Text Domain: photographer
 */
 
-/* Обычно в современной разработке этот файл остается пустым (содержит только этот комментарий),
-  а все реальные стили мы пишем в assets/css/main.css.
-  Но если захочешь писать стили прямо тут — WordPress это тоже поймет.
-*/
+/* Theme styles live in assets/css/theme.css and are loaded via inc/enqueue.php. */
