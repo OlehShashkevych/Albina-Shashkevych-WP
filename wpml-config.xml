@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wpml-config>
+  <custom-types>
+    <custom-type translate="1">project</custom-type>
+  </custom-types>
+  <taxonomies>
+    <taxonomy translate="1">project_type</taxonomy>
+  </taxonomies>
+  <custom-fields>
+    <custom-field action="copy">_wp_page_template</custom-field>
+    <custom-field action="copy">hero_image</custom-field>
+    <custom-field action="copy">_hero_image</custom-field>
+    <custom-field action="copy">project_year</custom-field>
+    <custom-field action="copy">_project_year</custom-field>
+    <custom-field action="translate">client_name</custom-field>
+    <custom-field action="translate">project_location</custom-field>
+    <custom-field action="translate">intro_text</custom-field>
+    <custom-field action="translate">cta_link</custom-field>
+    <custom-field action="translate">form_id</custom-field>
+    <custom-field action="copy">contact_email</custom-field>
+    <custom-field action="copy">_contact_email</custom-field>
+  </custom-fields>
+</wpml-config>

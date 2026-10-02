@@ -1,0 +1,19 @@
+:root {
+	--paper: #f4f2ec;
+	--ink: #20211e;
+	--muted: #62635e;
+	--line: #c8c8c0;
+	--accent: #a42c25;
+	--font-body: Arial, Helvetica, sans-serif;
+	--font-editorial: Georgia, 'Times New Roman', serif;
+	--gutter: clamp(1.25rem, 4vw, 5rem);
+	--space-section: clamp(4rem, 9vw, 10rem);
+	--space-small: clamp(1.25rem, 3vw, 3rem);
+	--content-width: 46rem;
+	--type-display: clamp(3.5rem, 10vw, 11rem);
+	--type-heading: clamp(2rem, 4.5vw, 5rem);
+	--z-header: 20;
+	--z-preview: 5;
+	--duration: 300ms;
+	--ease: cubic-bezier(.22, .61, .36, 1);
+}

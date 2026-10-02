@@ -1,38 +1,23 @@
 <?php
-function my_theme_setup() {
-    // Переводы темы (для .mo/.po файлов, если понадобятся стандартные)
-    load_theme_textdomain( 'photographer', get_template_directory() . '/languages' );
+defined( 'ABSPATH' ) || exit;
 
-    // Теги title
-    add_theme_support( 'title-tag' );
-
-    // Миниатюры
-    add_theme_support( 'post-thumbnails' );
-
-    // HTML5
-    add_theme_support( 'html5', array(
-        'search-form',
-        'comment-form',
-        'comment-list',
-        'gallery',
-        'caption',
-        'script',
-        'style',
-    ) );
-
-    // Theme supports
-    add_theme_support('align-wide');
-    add_theme_support('responsive-embeds');
-
-    // Custom image sizes
-    add_image_size('portfolio_thumb', 600, 750, true);
-    add_image_size('portfolio_large', 1440, 1800, false);
-    add_image_size('hero', 1920, 1080, false);
-
-    // Регистрация меню
-    register_nav_menus( array(
-        'header_menu' => __( 'Header Menu', 'photographer' ),
-        'footer_menu' => __( 'Footer Menu', 'photographer' ),
-    ) );
+function albina_setup() {
+	load_theme_textdomain( 'albina', get_template_directory() . '/languages' );
+	add_theme_support( 'title-tag' );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'automatic-feed-links' );
+	add_theme_support( 'responsive-embeds' );
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption', 'style', 'script' ) );
+	register_nav_menus( array( 'primary' => __( 'Primary navigation', 'albina' ) ) );
+	add_image_size( 'albina-editorial', 1920, 0, false );
+	add_image_size( 'albina-preview', 720, 960, true );
 }
-add_action( 'after_setup_theme', 'my_theme_setup' );
+add_action( 'after_setup_theme', 'albina_setup' );
+
+function albina_activate() {
+	albina_register_post_types();
+	albina_register_taxonomies();
+	flush_rewrite_rules();
+}
+add_action( 'after_switch_theme', 'albina_activate' );

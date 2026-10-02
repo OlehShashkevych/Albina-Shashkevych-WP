@@ -1,0 +1,119 @@
+msgid ""
+msgstr "Project-Id-Version: Albina 1.0.0\nLanguage: ru_RU\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "About"
+msgstr "Обо мне"
+
+msgid "Activate Fluent Forms to display the selected form."
+msgstr "Активируйте Fluent Forms, чтобы показать выбранную форму."
+
+msgid "All"
+msgstr "Все"
+
+msgid "All projects"
+msgstr "Все проекты"
+
+msgid "Back to top"
+msgstr "Наверх"
+
+msgid "Captions"
+msgstr "Субтитры"
+
+msgid "Client"
+msgstr "Клиент"
+
+msgid "Contact"
+msgstr "Контакты"
+
+msgid "Credits"
+msgstr "Команда"
+
+msgid "Download video"
+msgstr "Скачать видео"
+
+msgid "Explore work"
+msgstr "Смотреть работы"
+
+msgid "For Brands"
+msgstr "Для брендов"
+
+msgid "Image sequence — scroll horizontally"
+msgstr "Серия изображений — прокручивайте горизонтально"
+
+msgid "Journal"
+msgstr "Журнал"
+
+msgid "Languages"
+msgstr "Языки"
+
+msgid "Let’s create together"
+msgstr "Давайте создадим вместе"
+
+msgid "Location"
+msgstr "Локация"
+
+msgid "Menu"
+msgstr "Меню"
+
+msgid "New work will appear here soon."
+msgstr "Новые работы скоро появятся здесь."
+
+msgid "Next"
+msgstr "Следующая"
+
+msgid "Nothing found."
+msgstr "Ничего не найдено."
+
+msgid "Outside the frame."
+msgstr "За пределами кадра."
+
+msgid "Portfolio"
+msgstr "Портфолио"
+
+msgid "Previous"
+msgstr "Предыдущая"
+
+msgid "Primary navigation"
+msgstr "Основная навигация"
+
+msgid "Project"
+msgstr "Проект"
+
+msgid "Project index"
+msgstr "Индекс проектов"
+
+msgid "Project types"
+msgstr "Типы проектов"
+
+msgid "Projects"
+msgstr "Проекты"
+
+msgid "Return home"
+msgstr "На главную"
+
+msgid "Search results"
+msgstr "Результаты поиска"
+
+msgid "Selected work"
+msgstr "Избранные работы"
+
+msgid "Services / proposal"
+msgstr "Услуги / предложение"
+
+msgid "Skip to content"
+msgstr "Перейти к содержимому"
+
+msgid "Start a project"
+msgstr "Начать проект"
+
+msgid "This page could not be found."
+msgstr "Эта страница не найдена."
+
+msgid "Video transcript"
+msgstr "Текст видео"
+
+msgid "Work"
+msgstr "Работы"
+
+msgid "Year"
+msgstr "Год"

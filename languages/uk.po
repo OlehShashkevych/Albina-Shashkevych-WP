@@ -1,0 +1,119 @@
+msgid ""
+msgstr "Project-Id-Version: Albina 1.0.0\nLanguage: uk\nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "About"
+msgstr "Про мене"
+
+msgid "Activate Fluent Forms to display the selected form."
+msgstr "Активуйте Fluent Forms, щоб показати вибрану форму."
+
+msgid "All"
+msgstr "Усі"
+
+msgid "All projects"
+msgstr "Усі проєкти"
+
+msgid "Back to top"
+msgstr "На початок"
+
+msgid "Captions"
+msgstr "Субтитри"
+
+msgid "Client"
+msgstr "Клієнт"
+
+msgid "Contact"
+msgstr "Контакти"
+
+msgid "Credits"
+msgstr "Команда"
+
+msgid "Download video"
+msgstr "Завантажити відео"
+
+msgid "Explore work"
+msgstr "Переглянути роботи"
+
+msgid "For Brands"
+msgstr "Для брендів"
+
+msgid "Image sequence — scroll horizontally"
+msgstr "Серія зображень — гортайте горизонтально"
+
+msgid "Journal"
+msgstr "Журнал"
+
+msgid "Languages"
+msgstr "Мови"
+
+msgid "Let’s create together"
+msgstr "Створімо разом"
+
+msgid "Location"
+msgstr "Локація"
+
+msgid "Menu"
+msgstr "Меню"
+
+msgid "New work will appear here soon."
+msgstr "Нові роботи незабаром з’являться тут."
+
+msgid "Next"
+msgstr "Наступна"
+
+msgid "Nothing found."
+msgstr "Нічого не знайдено."
+
+msgid "Outside the frame."
+msgstr "За межами кадру."
+
+msgid "Portfolio"
+msgstr "Портфоліо"
+
+msgid "Previous"
+msgstr "Попередня"
+
+msgid "Primary navigation"
+msgstr "Основна навігація"
+
+msgid "Project"
+msgstr "Проєкт"
+
+msgid "Project index"
+msgstr "Індекс проєктів"
+
+msgid "Project types"
+msgstr "Типи проєктів"
+
+msgid "Projects"
+msgstr "Проєкти"
+
+msgid "Return home"
+msgstr "На головну"
+
+msgid "Search results"
+msgstr "Результати пошуку"
+
+msgid "Selected work"
+msgstr "Вибрані роботи"
+
+msgid "Services / proposal"
+msgstr "Послуги / пропозиція"
+
+msgid "Skip to content"
+msgstr "Перейти до вмісту"
+
+msgid "Start a project"
+msgstr "Розпочати проєкт"
+
+msgid "This page could not be found."
+msgstr "Цю сторінку не знайдено."
+
+msgid "Video transcript"
+msgstr "Текст відео"
+
+msgid "Work"
+msgstr "Роботи"
+
+msgid "Year"
+msgstr "Рік"

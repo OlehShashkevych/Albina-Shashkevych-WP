@@ -1,4 +1,5 @@
 <?php
+/** Template Name: Portfolio Deck */
 defined( 'ABSPATH' ) || exit;
 get_header();
 while ( have_posts() ) : the_post();
@@ -8,8 +9,6 @@ while ( have_posts() ) : the_post();
 		echo '</div>';
 		continue;
 	}
-?>
-<article <?php post_class( 'standard-page' ); ?>>
-	<?php get_template_part( 'template-parts/components/page-opening' ); ?>
-</article>
-<?php endwhile; get_footer(); ?>
+	get_template_part( 'template-parts/components/presentation-page', null, array( 'class' => 'deck-page' ) );
+endwhile;
+get_footer();

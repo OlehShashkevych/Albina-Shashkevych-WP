@@ -1,33 +1,23 @@
 <?php
-if (!defined('ABSPATH')) {
-    exit;
-}
+defined( 'ABSPATH' ) || exit;
 
-/**
- * Custom taxonomies
- */
-function theme_register_taxonomies() {
-    register_taxonomy('portfolio_category', 'portfolio', array(
-        'labels' => array(
-            'name'                       => __('Categories', 'photographer'),
-            'singular_name'              => __('Category', 'photographer'),
-            'search_items'               => __('Search Categories', 'photographer'),
-            'all_items'                  => __('All Categories', 'photographer'),
-            'parent_item'                => __('Parent Category', 'photographer'),
-            'parent_item_colon'          => __('Parent Category:', 'photographer'),
-            'edit_item'                  => __('Edit Category', 'photographer'),
-            'update_item'                => __('Update Category', 'photographer'),
-            'add_new_item'               => __('Add New Category', 'photographer'),
-            'new_item_name'              => __('New Category Name', 'photographer'),
-            'menu_name'                  => __('Categories', 'photographer'),
-        ),
-        'hierarchical'      => true,
-        'public'            => true,
-        'show_ui'           => true,
-        'show_in_rest'      => true,
-        'show_admin_column' => true,
-        'query_var'         => true,
-        'rewrite'           => array('slug' => 'portfolio/category', 'with_front' => false),
-    ));
+function albina_register_taxonomies() {
+	register_taxonomy( 'project_type', 'project', array(
+		'labels' => array(
+			'name' => __( 'Project types', 'albina' ),
+			'singular_name' => __( 'Project type', 'albina' ),
+			'search_items' => __( 'Search project types', 'albina' ),
+			'all_items' => __( 'All project types', 'albina' ),
+			'edit_item' => __( 'Edit project type', 'albina' ),
+			'update_item' => __( 'Update project type', 'albina' ),
+			'add_new_item' => __( 'Add project type', 'albina' ),
+			'new_item_name' => __( 'New project type name', 'albina' ),
+		),
+		'public' => true,
+		'hierarchical' => true,
+		'show_in_rest' => true,
+		'show_admin_column' => true,
+		'rewrite' => array( 'slug' => 'project-type', 'with_front' => false ),
+	) );
 }
-add_action('init', 'theme_register_taxonomies', 0);
+add_action( 'init', 'albina_register_taxonomies' );

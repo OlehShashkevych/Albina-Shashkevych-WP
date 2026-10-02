@@ -1,0 +1,5 @@
+# Local validation, editor and OS artifacts only; theme sources ship directly.
+/.qa/
+.DS_Store
+Thumbs.db
+*.log
