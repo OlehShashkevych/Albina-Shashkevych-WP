@@ -2,6 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 $block = $args['block'];
 if ( empty( $block['images'] ) ) { return; }
+albina_enqueue_motion( 'sticky-gallery' );
 ?>
 <figure class="editorial-block sticky-sequence" data-motion="sticky-gallery">
 	<div class="sticky-images">

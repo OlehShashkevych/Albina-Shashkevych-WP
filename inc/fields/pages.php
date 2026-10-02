@@ -10,10 +10,11 @@ function albina_register_page_fields() {
 	$project_location = array( array( 'param' => 'post_type', 'operator' => '==', 'value' => 'project' ) );
 	acf_add_local_field_group( array(
 		'key' => 'group_albina_intro', 'title' => __( 'Opening image and introduction', 'albina' ),
-		'fields' => array(
+		'fields' => array_merge( array(
 			albina_field_definition( 'intro', 'hero_image', __( 'Hero / profile image', 'albina' ), 'image', array( 'return_format' => 'id', 'instructions' => __( 'Falls back to the featured image. Add descriptive alt text in the Media Library.', 'albina' ) ) ),
+		), albina_crop_fields( 'intro', 'hero' ), array(
 			albina_field_definition( 'intro', 'intro_text', __( 'Short introduction', 'albina' ), 'textarea', array( 'rows' => 3 ) ),
-		),
+		) ),
 		'location' => array_merge( $special_locations, array( $home_location, $project_location ) ),
 	) );
 

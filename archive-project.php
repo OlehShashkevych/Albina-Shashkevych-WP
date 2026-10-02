@@ -1,6 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 get_header();
+albina_enqueue_motion( 'split-text' );
 $types = get_terms( array( 'taxonomy' => 'project_type', 'hide_empty' => true ) );
 ?>
 <header class="page-heading section-pad">

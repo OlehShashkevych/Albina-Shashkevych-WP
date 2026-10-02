@@ -2,6 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 $block = $args['block'];
 if ( empty( $block['image'] ) ) { return; }
+albina_enqueue_motion( 'mask-reveal' );
 ?>
 <figure class="editorial-block fullscreen-image" data-motion="mask-reveal">
 	<?php albina_image( $block['image'], 'albina-editorial', array( 'sizes' => '100vw' ) ); ?>

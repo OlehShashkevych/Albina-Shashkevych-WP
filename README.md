@@ -17,7 +17,7 @@ A portable, image-led fashion portfolio. PHP, plain CSS and browser JavaScript a
 6. Add projects, project types and responsive media. Featured image is the fallback for the hero field. Use the core excerpt or Short introduction for the project description. Fill client, year, location, credits and editorial blocks as needed.
 7. Configure About credentials; For Brands services and selected projects; Pitch/Deck selected projects, standalone imagery/editorial blocks and optional proposals. These selections are omitted when empty; unrelated projects are not substituted.
 8. Create and configure a Fluent Forms form (including recipients, spam protection and confirmation) and enter its numeric ID on Contact. Alternatively, leave the ID empty and insert the plugin’s block/shortcode in the page editor. Add the optional public email as a fallback contact route. Avoid adding both form placements. Create a form for each language and set its ID on that translated Contact page.
-9. Add genuine local GSAP vendor files listed below to enable motion. Upload real photography and set alt text in the Media Library. No demo photography, invented clients or production project copy is bundled.
+9. GSAP is bundled locally and motion is ready. Upload real photography and set alt text in the Media Library. No demo photography, invented clients or production project copy is bundled.
 
 ## Structure
 
@@ -35,7 +35,7 @@ A portable, image-led fashion portfolio. PHP, plain CSS and browser JavaScript a
 
 ## Local GSAP integration
 
-Not supplied in this repository:
+Bundled, unchanged **GSAP 3.15.0** from the official repository:
 
 ```text
 assets/vendor/gsap/gsap.min.js
@@ -44,9 +44,11 @@ assets/vendor/gsap/Flip.min.js
 assets/vendor/gsap/SplitText.min.js
 ```
 
-Supply matching official distribution versions (core 3.11+), preserving license notices. The enqueue layer checks every file. Core precedes plugins, bootstrap precedes effect modules, and `app.js` loads last. No missing vendor path is requested.
+Source commit, file checksums and license link are recorded in `assets/vendor/gsap/README.md`. Vendor copyright/license headers are preserved. No CDN, npm or additional plugin is required.
 
-Core enables the short shutter entrance and kinetic headings. ScrollTrigger enables masks, progressive image reveals and desktop sticky sequences. SplitText optionally adds word-level movement; headings otherwise animate as a whole. Flip is registered when supplied; `data-flip-id` is a foundation for future shared-element transitions, not a router or implemented inter-page transition. Horizontal strips use native scrolling, including keyboard access. No autoplay video or scroll interception.
+`inc/assets.php` registers assets without downloading them to the visitor. Each rendered template part calls `albina_enqueue_motion()` for its effect. WordPress resolves core/plugin dependencies; the app is enqueued at `wp_footer` priority 5 with only the requested effects as dependencies, before WordPress prints footer scripts. For example, 404 loads only navigation, About adds GSAP/SplitText, a selection of project covers adds Flip, and editorial masks/sticky sequences add ScrollTrigger. Missing vendor files disable only the dependent effect.
+
+Core enables the short shutter entrance and kinetic headings; SplitText adds word-level movement. ScrollTrigger enables masks and desktop sticky sequences. On a normal project-cover click, Flip expands a decorative copy of the displayed image to the viewport over 0.45 seconds and follows the original link with native navigation. Modified clicks, new tabs, downloads, unavailable images/libraries and reduced motion retain normal link behavior. Back navigation clears the overlay. No SPA router or Ajax page replacement is involved. Horizontal strips use native scrolling, including keyboard access. No autoplay video or scroll interception.
 
 All content is visible in the baseline CSS. Reduced motion disables motion and cleans up via GSAP matchMedia when the preference changes. Pointer previews only activate on wide screens with a fine pointer; touch/narrow layouts display inline thumbnails. Navigation works without JavaScript, and the mobile menu is enhanced progressively.
 
@@ -54,7 +56,17 @@ All content is visible in the baseline CSS. Reduced motion disables motion and c
 
 UI strings use the `albina` text domain. Included `uk` and `ru_RU` catalogs cover the frontend; WordPress uses the visitor locale selected by Polylang. Editor labels remain translatable through standard gettext catalogs. Update catalogs if UI strings change.
 
-`wpml-config.xml` copies shared top-level hero media/year/template/email and marks short text, CTA and form ID for independent translation. Polylang treats `translate` like copy-once; this does not perform automatic translation. **Do not enable blanket custom-field synchronization**: nested editorial content, services, facts, credits and project selections are maintained per language to avoid overwriting translated copy or mismatching repeater rows. Reuse the same Media Library attachments and credit names as appropriate. Review selected project links in each language; the renderer resolves linked translations and omits untranslated/private selections.
+Creating a translation through Polylang copies this theme’s SCF data once: editorial layouts, images, nested credits, facts, services, project selections, opening fields and crop settings, including private SCF field-key references. Source-language text is copied as a starting point to translate, not machine-translated. Core title/body translation remains Polylang’s responsibility. Review copied CTA URLs and form IDs for the target language.
+
+`inc/polylang.php` uses `pll_copy_post_metas` to exclude theme fields from subsequent synchronization, even if blanket custom-field synchronization is enabled. Existing target fields are preserved; an existing repeater/flexible-content tree is protected as a whole, including partially populated trees. No existing translations are migrated or backfilled automatically. Other plugins’ metadata is unaffected. `wpml-config.xml` keeps the page template shared and records copy-once media/crop/year preferences. Media attachment IDs are shared; translate attachment alt text separately if needed. Selected projects use available target-language IDs, retaining unresolved source IDs so the frontend can resolve translations created later; unpublished/untranslated selections remain omitted from the frontend.
+
+## Image framing
+
+Opening-image fields now include an optional mobile image and desktop/mobile horizontal/vertical focus controls: **0%** is left/top, **50%** is center, **100%** is right/bottom. These set `object-position` wherever the design crops an image; they do not crop or modify the uploaded original. Existing images remain centered until adjusted. Uncropped portrait layouts continue to show the full image.
+
+Projects also have an optional **Project cover image** plus separate cover mobile image and focus controls. These affect selected work, archives and project-index thumbnails independently of the single-project hero. If the cover image is empty, it uses the hero/featured image; its mobile source falls back to the hero’s mobile image. A custom cover without a mobile version uses that custom cover at every width.
+
+`albina_art_directed_image()` renders native `<picture>`/`<source>` with WordPress image sources, srcsets and dimensions. Up to 760px the browser selects the mobile source; larger screens use the desktop source. Focus settings can differ on mobile even when both use the same image. Mobile alternatives should depict the same subject, as the fallback image’s alt text describes both sources. Invalid/missing mobile media falls back to the desktop image. Without SCF, featured images continue to work.
 
 SCF keys and names are stable and defined once. Do not create duplicate groups in the SCF UI. Without SCF, custom sections are omitted and core titles, content, excerpts and featured images remain available. Without Polylang, the theme works as a single-language site. Without Fluent Forms, no theme form is simulated; any configured public email remains visible. Protected pages must not expose structured content before password entry.
 
@@ -64,8 +76,10 @@ Video blocks accept local MP4/WebM attachments with controls and a poster. For s
 
 Before deployment, lint changed PHP files with `php -l` and JavaScript with `node --check` (validation tools only; neither is needed to serve the theme). Verify SCF keys, layout renderers and enqueue paths. There is no frontend compilation command.
 
-After activation on the actual WordPress site, verify all three languages, SCF editing/saving, menu routes, media crops, pagination, mobile navigation, keyboard focus, reduced motion and a real Fluent Forms submission/email. Vendor animation behavior requires the genuine GSAP files. Local static checks cannot establish hosting configuration, mail delivery, Polylang/SCF plugin interoperability or live deployment success.
+After activation on the actual WordPress site, verify all three languages, SCF editing/saving, menu routes, media crops, pagination, mobile navigation, keyboard focus, reduced motion and a real Fluent Forms submission/email. Local checks cannot establish hosting configuration, mail delivery, Polylang/SCF plugin interoperability or live deployment success.
 
 Initial local verification: 45 PHP files and 8 JavaScript files passed syntax checks; XML and both MO catalogs parsed successfully. An isolated PHP fixture exercised 36 template/data combinations, including absent SCF and password protection, and checked unique field keys, block files and asset dependencies. Headless Edge checked nine layouts at 320, 390, 768, 1366 and 1920 pixels, plus mobile menu/Escape/focus, navigation without JavaScript and reduced-motion CSS. No horizontal document overflow or page JavaScript errors were found. Fixture files and test images stay in ignored `.qa/` and are not deployed. These are fixture checks, not a live WordPress integration test.
+
+Version 1.1 local verification: 24 fixture renders checked the changed templates, field keys and asset dependencies. Translation tests covered nested/private SCF metadata, existing and partial target trees, repeated copy, blanket synchronization and project-ID mapping. Headless Edge exercised the actual bundled GSAP libraries, Flip navigation, modified clicks, back navigation, reduced-motion cleanup, missing-core fallback, conditional script requests, mobile image selection and focal positions; 15 responsive layout checks passed at 320–1920px without page JavaScript errors. Server/admin integration remains a separate manual check. No CI or deployment pipeline was added.
 
 API references: [SCF local field registration](https://developer.wordpress.org/secure-custom-fields/code-reference/local-fields-file/) and [Polylang wpml-config.xml behavior](https://polylang.pro/documentation/support/developers/the-wpml-config-xml-file/).

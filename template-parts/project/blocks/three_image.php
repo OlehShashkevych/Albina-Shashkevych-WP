@@ -1,6 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 $block = $args['block'];
+albina_enqueue_motion( 'mask-reveal' );
 ?>
 <figure class="editorial-block image-triptych section-pad">
 	<div class="image-composition">

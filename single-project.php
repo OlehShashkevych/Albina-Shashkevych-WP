@@ -8,6 +8,7 @@ while ( have_posts() ) : the_post();
 		echo '</div>';
 		continue;
 	}
+albina_enqueue_motion( 'split-text' );
 ?>
 <article <?php post_class( 'project-story' ); ?>>
 	<header class="project-heading section-pad">
@@ -22,7 +23,7 @@ while ( have_posts() ) : the_post();
 			<?php endforeach; ?>
 		</dl>
 	</header>
-	<?php if ( albina_hero_id() ) : ?><figure class="project-hero" data-flip-id="project-<?php the_ID(); ?>"><?php albina_image( albina_hero_id(), 'albina-editorial', array( 'loading' => 'eager', 'fetchpriority' => 'high', 'sizes' => '100vw' ) ); ?></figure><?php endif; ?>
+	<?php if ( albina_hero_id() ) : ?><figure class="project-hero" data-flip-id="project-<?php the_ID(); ?>"><?php albina_art_directed_image( false, 'hero', array( 'loading' => 'eager', 'fetchpriority' => 'high', 'sizes' => '100vw' ) ); ?></figure><?php endif; ?>
 	<div class="prose section-pad"><?php the_content(); wp_link_pages(); ?></div>
 	<?php albina_editorial( albina_field( 'editorial_blocks', false, array() ) ); ?>
 	<?php get_template_part( 'template-parts/project/blocks/credits', null, array( 'block' => array( 'credits' => albina_field( 'credits', false, array() ) ) ) ); ?>

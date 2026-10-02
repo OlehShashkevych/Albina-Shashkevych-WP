@@ -59,6 +59,42 @@ function albina_hero_id( $post_id = false ) {
 	return absint( albina_field( 'hero_image', $post_id, get_post_thumbnail_id( $post_id ) ) );
 }
 
+function albina_cover_id( $post_id ) {
+	return post_password_required( $post_id ) ? 0 : absint( albina_field( 'cover_image', $post_id, albina_hero_id( $post_id ) ) );
+}
+
+/** Native picture/srcset art direction: the browser downloads the matching source only. */
+function albina_art_directed_image( $post_id = false, $context = 'hero', $attrs = array() ) {
+	$post_id = $post_id ?: get_the_ID();
+	$context = 'cover' === $context ? 'cover' : 'hero';
+	$id = 'cover' === $context ? albina_cover_id( $post_id ) : albina_hero_id( $post_id );
+	if ( ! $id ) {
+		return;
+	}
+	$mobile_id = absint( albina_field( $context . '_mobile_image', $post_id ) );
+	if ( ! $mobile_id && 'cover' === $context && ! albina_field( 'cover_image', $post_id ) ) {
+		$mobile_id = absint( albina_field( 'hero_mobile_image', $post_id ) );
+	}
+	$style = '';
+	foreach ( array( 'focus_x', 'focus_y', 'mobile_focus_x', 'mobile_focus_y' ) as $axis ) {
+		$value = albina_field( $context . '_' . $axis, $post_id, 50 );
+		$value = is_numeric( $value ) ? max( 0, min( 100, (float) $value ) ) : 50;
+		$style .= '--' . str_replace( '_', '-', $axis ) . ':' . $value . '%;';
+	}
+	$attrs['class'] = trim( ( $attrs['class'] ?? '' ) . ' art-directed-image' );
+	$attrs['style'] = $style;
+	$size = $attrs['image_size'] ?? 'albina-editorial';
+	unset( $attrs['image_size'] );
+	echo '<picture class="art-directed-media">';
+	$mobile = $mobile_id ? wp_get_attachment_image_src( $mobile_id, $size ) : false;
+	if ( $mobile ) {
+		$srcset = wp_get_attachment_image_srcset( $mobile_id, $size ) ?: $mobile[0];
+		echo '<source media="(max-width: 760px)" srcset="' . esc_attr( $srcset ) . '" sizes="' . esc_attr( $attrs['sizes'] ?? '100vw' ) . '" width="' . absint( $mobile[1] ) . '" height="' . absint( $mobile[2] ) . '">';
+	}
+	albina_image( $id, $size, $attrs );
+	echo '</picture>';
+}
+
 /** Explicit selections retain editorial order; fallback is limited to recent projects. */
 function albina_projects( $ids = array(), $limit = 6 ) {
 	$args = array(
